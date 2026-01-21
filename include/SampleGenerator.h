@@ -9,7 +9,6 @@ public:
     float* generateSamples(Shape shape, float time, float frequency);
 
 private:
-    float calculateSine(float degrees);
     float* generateSine(float sampleSize, float frequency);
 
     float *generateSquare(float sampleSize, float frequency);

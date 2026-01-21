@@ -3,9 +3,8 @@
 #include "include/SampleGenerator.h"
 
 int main(int argc, char *argv[]) {
-    /* ./Sprocket > audio.csv
-     * gnuplot -p -e "set datafile separator ','; plot 'audio.csv' using 2 with lines"
-     */
+    /* cmake-build-debug/Sprocket > audio.csv
+     * gnuplot -p -e "set datafile separator ','; plot 'audio.csv' using 2 with lines" */
     SampleGenerator sampleGenerator;
     float* samples = sampleGenerator.generateSamples(SampleGenerator::SINE, 10, 440.0f);
 

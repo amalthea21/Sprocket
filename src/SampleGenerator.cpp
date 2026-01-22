@@ -7,9 +7,10 @@ float *SampleGenerator::generateSine(float sampleSize, float frequency) {
 
     int samples_count = static_cast<int>(sampleSize * SAMPLERATE);
     float* samples = new float[samples_count];
+    float t;
 
     for (int i = 0; i < samples_count; i++) {
-        float t = static_cast<float>(i) / SAMPLERATE;
+        t = static_cast<float>(i) / SAMPLERATE;
         samples[i] = Math::Sine(2.0f * PI * frequency * t * 180.0f / PI);
     }
 
@@ -23,12 +24,12 @@ float *SampleGenerator::generateSawtooth(float sampleSize, float frequency) {
     float* samples = new float[samples_count];
     float t, phase;
 
-    for (int i = 0; i < sampleSize; i++) {
+    for (int i = 0; i < samples_count; i++) {
         t = static_cast<float>(i) / SAMPLERATE;
 
         phase = Math::fmod(t * frequency, 1.0f);
 
-        samples[i] = (phase < 0.5f) ? 1.0f : -1.0f;
+        samples[i] = 2.0f * phase - 1.0f;
     }
 
     return samples;
@@ -39,9 +40,16 @@ float *SampleGenerator::generateTriangle(float sampleSize, float frequency) {
 
     int samples_count = static_cast<int>(sampleSize * SAMPLERATE);
     float* samples = new float[samples_count];
+    float t, phase;
 
-    for (int i = 0; i < sampleSize; i++) {
+    for (int i = 0; i < samples_count; i++) {
+        t = static_cast<float>(i) / SAMPLERATE;
 
+        phase = Math::fmod(t * frequency, 1.0f);
+
+        if (phase < 0.5f)
+            samples[i] = 4.0f * phase - 1.0f;
+        else samples[i] = 3.0f - 4.0f * phase;
     }
 
     return samples;
@@ -52,9 +60,16 @@ float *SampleGenerator::generateSquare(float sampleSize, float frequency) {
 
     int samples_count = static_cast<int>(sampleSize * SAMPLERATE);
     float* samples = new float[samples_count];
+    float t, phase;
 
-    for (int i = 0; i < sampleSize; i++) {
+    for (int i = 0; i < samples_count; i++) {
+        t = static_cast<float>(i) / SAMPLERATE;
 
+        phase = Math::fmod(t * frequency, 1.0f);
+
+        if (phase < 0.5f)
+            samples[i] = 1.0f;
+        else samples[i] = -1.0f;
     }
 
     return samples;

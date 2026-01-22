@@ -6,14 +6,14 @@ public:
         SINE, SQUARE, TRIANGLE, SAWTOOTH
     };
 
-    float* generateSamples(Shape shape, float time, float frequency);
+    static float* generateSamples(Shape shape, float time, float frequency);
 
 private:
-    float* generateSine(float sampleSize, float frequency);
+    static float* generateSine(float sampleSize, float frequency);
 
-    float *generateSquare(float sampleSize, float frequency);
+    static float *generateSquare(float sampleSize, float frequency);
 
-    float *generateTriangle(float sampleSize, float frequency);
+    static float *generateTriangle(float sampleSize, float frequency);
 
-    float *generateSawtooth(float sampleSize, float frequency);
+    static float *generateSawtooth(float sampleSize, float frequency);
 };

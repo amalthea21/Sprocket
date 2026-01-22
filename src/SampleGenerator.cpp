@@ -1,8 +1,6 @@
 #include "../include/SampleGenerator.h"
 #include "../include/Math.h"
 
-#include <cmath>
-
 float *SampleGenerator::generateSine(float sampleSize, float frequency) {
     const float PI = 3.14159265359f;
     const int SAMPLERATE = 44100;
@@ -12,7 +10,7 @@ float *SampleGenerator::generateSine(float sampleSize, float frequency) {
 
     for (int i = 0; i < samples_count; i++) {
         float t = static_cast<float>(i) / SAMPLERATE;
-        samples[i] = Math::calculateSine(2.0f * PI * frequency * t * 180.0f / PI);
+        samples[i] = Math::Sine(2.0f * PI * frequency * t * 180.0f / PI);
     }
 
     return samples;
@@ -28,7 +26,7 @@ float *SampleGenerator::generateSawtooth(float sampleSize, float frequency) {
     for (int i = 0; i < sampleSize; i++) {
         t = static_cast<float>(i) / SAMPLERATE;
 
-        phase = std::fmod(t * frequency, 1.0f);
+        phase = Math::fmod(t * frequency, 1.0f);
 
         samples[i] = (phase < 0.5f) ? 1.0f : -1.0f;
     }

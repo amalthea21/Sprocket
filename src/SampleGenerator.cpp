@@ -1,6 +1,7 @@
 #include "../include/SampleGenerator.h"
 #include "../include/Math.h"
 
+#pragma region Primitive Shapes
 float *SampleGenerator::generateSine(float sampleSize, float frequency) {
     const float PI = 3.14159265359f;
     const int SAMPLERATE = 44100;
@@ -74,6 +75,7 @@ float *SampleGenerator::generateSquare(float sampleSize, float frequency) {
 
     return samples;
 }
+#pragma endregion
 
 float *SampleGenerator::generateSamples(Shape shape, float time, float frequency) {
     float* samples;

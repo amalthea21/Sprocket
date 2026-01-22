@@ -7,12 +7,9 @@ int main(int argc, char *argv[]) {
     /* Running:
      * cmake-build-debug/Sprocket > audio.csv
      * gnuplot -p -e "set datafile separator ','; plot 'audio.csv' using 2 with lines"
-     *
-     * TODO: Amplitude
-     * TODO: Triangle, Square
      */
 
-    float* samples = SampleGenerator::generateSamples(SampleGenerator::SQUARE, 10, 440.0f);
+    float* samples = SampleGenerator::generateSamples(SampleGenerator::TRIANGLE, 10, 440.0f);
 
     int sampleCount = Math::min(1000, 44100*10);
 
